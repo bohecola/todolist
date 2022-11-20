@@ -53,7 +53,18 @@ module.exports = {
     },
   ],
   // Specify the scopes for your particular project
-  scopes: [],
+  scopes: [ 
+    ['components', '组件相关'], 
+    ['hooks', 'hook 相关'], 
+    ['utils', 'utils 相关'], 
+    ['styles', '样式相关'], 
+    ['deps', '项目依赖'], 
+    ['other', '其他修改'], 
+  ].map(([value, description]) => { 
+    return { value, 
+    name: `${value.padEnd(30)} (${description})` } 
+  }),
+  scopeOverrides: {},
   allowCustomScopes: true,
   allowBreakingChanges: ['feat', 'fix'],
 }
