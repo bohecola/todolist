@@ -2,9 +2,24 @@
   "name": "@bohecola/todolist",
   "version": "0.0.2",
   "description": "a simple todolist",
-  "main": "index.js",
+  "files": [
+    "dist/*",
+    "LICENSE",
+    "README.md"
+  ],
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.mjs",
+  "exports": {
+    ".": {
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.cjs"
+    },
+    "./*": "./dist/*"
+  },
   "scripts": {
     "prepare": "husky install",
+    "dev": "rimraf dist && rollup -w -c ./scripts/build.dev.mjs",
+    "build": "rimraf dist && rollup -c ./scripts/build.prod.mjs",
     "release": "bump package.json CHANGELOG.md --commit --push --tag --no-verify && pnpm publish --access public",
     "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s"
   },
@@ -36,10 +51,13 @@
     "@commitlint/cli": "^17.2.0",
     "@commitlint/config-conventional": "^17.2.0",
     "@jsdevtools/version-bump-prompt": "^6.1.0",
+    "@rollup/plugin-terser": "^0.1.0",
     "conventional-changelog-cli": "^2.2.2",
     "cz-customizable": "^7.0.0",
     "eslint": "^8.28.0",
     "husky": "^8.0.2",
-    "lint-staged": "^13.0.3"
+    "lint-staged": "^13.0.3",
+    "rimraf": "^3.0.2",
+    "rollup": "^3.3.0"
   }
 }

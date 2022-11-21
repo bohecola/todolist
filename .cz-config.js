@@ -48,6 +48,10 @@ module.exports = {
         '💅  style: Code Style, Changes that do not affect the meaning of the code (white-space, formatting, missing semi-colons, etc)',
     },
     {
+      value: 'build',
+      name: '🍺  build: Changes to project construction or dependencies'
+    },
+    {
       value: 'revert',
       name: '⏱  revert: Revert to a commit',
     },
